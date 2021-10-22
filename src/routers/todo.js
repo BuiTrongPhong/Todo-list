@@ -1,0 +1,16 @@
+const express = require('express')
+const todoController = require('../app/controllers/TodoController')
+const router = express.Router()
+
+router.route('/')
+    .get(todoController.index)
+    .post(todoController.createTodo)
+router.route('/create')
+    .get(todoController.add)
+router.route('/:id')
+    .get(todoController.getOneTodo)
+    .delete(todoController.deleteTodo)
+    .put(todoController.replaceTodo)
+router.route('/:id/edit')
+    .get(todoController.editTodo)
+module.exports = router

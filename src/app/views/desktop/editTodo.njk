@@ -1,0 +1,11 @@
+{% extends "../layout/home.njk" %} {% block body %}
+<div class="font-weight-bold mb-3">Edit todo</div>
+<form method="POST" action="/todos/{{todo.id}}?_method=PUT">
+    <div class="form-group">
+        <label for="name">Name todo </label>
+        <input name="name" class="form-control" placeholder="Enter name" value="{{todo.name}}">
+
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}

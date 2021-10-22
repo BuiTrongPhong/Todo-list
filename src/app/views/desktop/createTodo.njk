@@ -1,0 +1,10 @@
+{% extends "../layout/home.njk" %}
+{% block body %}
+    <form method="POST" action="/todos">
+        <div class="form-group">
+            <label for="name">Name todo</label>
+            <input name="name" class="form-control" id="" placeholder="Enter name todo">
+        </div>
+        <button type="submit" class="btn btn-primary">add</button>
+    </form>
+{% endblock %}
