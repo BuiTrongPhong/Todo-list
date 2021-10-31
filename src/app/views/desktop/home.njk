@@ -1,4 +1,14 @@
 {% extends "../layout/home.njk" %}
 {% block body %}
-     
+     <div>
+         <h2>Những âm thanh hay nhất</h2>
+         <div>
+             <audio controls>
+                <source src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" type="audio/mp3">
+            </audio>
+            {% for item in musics %}
+                <div>{{item.name}}</div>
+            {% endfor %}
+         </div>
+     </div>
 {% endblock %}

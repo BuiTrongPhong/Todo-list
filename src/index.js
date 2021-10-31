@@ -1,14 +1,30 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
 const db = require('./app/config/db/index')
-const todo = require('./routers/index')
+const index = require('./routers/index')
 const nunjucks = require('nunjucks')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
-    // connect to database
+const multer = require('multer')
+//upload file
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+
+const upload = multer({ storage: storage });
+
+// connect to database
 db()
 
 const app = new express()
+
+//middleware
+
 app.use(morgan('dev'))
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({
@@ -23,7 +39,7 @@ nunjucks.configure('src/app/views', {
 app.set('view engine', 'njk')
 
 
-app.use('/', todo)
+app.use('/', index)
 
 
 
